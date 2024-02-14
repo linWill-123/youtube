@@ -1,5 +1,10 @@
-import "./App.css";
+import { PageHeader } from "./layouts/PageHeader";
 
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div className="max-h-screen flex flex-col">
+      <PageHeader />
+      <div>2</div>
+    </div>
+  );
 }
