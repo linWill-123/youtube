@@ -1,11 +1,18 @@
-import { Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
+import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
 import logo from "../assets/youtube.jpg";
 import { Button } from "../components/Button";
+import { useState } from "react";
 export function PageHeader() {
+  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
+
   return (
     <div className=" flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
       {/* youtube logo */}
-      <div className="flex gap-4 items-center flex-shrink-0">
+      <div
+        className={`gap-4 items-center flex-shrink-0 ${
+          showFullWidthSearch ? "hidden" : "flex"
+        }`}
+      >
         <Button variant="ghost" size="icon">
           <Menu />
         </Button>
@@ -14,7 +21,22 @@ export function PageHeader() {
         </a>
       </div>
       {/* search bar */}
-      <form className="md:flex hidden gap-4 flex-grow justify-center items-center">
+      <form
+        className={`gap-4 flex-grow justify-center items-center ${
+          showFullWidthSearch ? "flex" : "hidden md:flex"
+        }`}
+      >
+        {showFullWidthSearch && (
+          <Button
+            onClick={() => setShowFullWidthSearch(false)}
+            type="button"
+            size="icon"
+            variant="ghost"
+            className="flex-shrink-0"
+          >
+            <ArrowLeft />
+          </Button>
+        )}
         <div className=" flex flex-grow max-w-[600px]">
           <input
             type="search"
@@ -31,8 +53,17 @@ export function PageHeader() {
         </Button>
       </form>
       {/* right buttons */}
-      <div className="flex flex-shrink-0 md:gap-2">
-        <Button size="icon" variant="ghost" className="md:hidden">
+      <div
+        className={`flex-shrink-0 md:gap-2 ${
+          showFullWidthSearch ? "hidden" : "flex"
+        }`}
+      >
+        <Button
+          onClick={() => setShowFullWidthSearch(true)}
+          size="icon"
+          variant="ghost"
+          className="md:hidden"
+        >
           <Search />
         </Button>
         <Button size="icon" variant="ghost" className="md:hidden">
