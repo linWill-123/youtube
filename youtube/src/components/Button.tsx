@@ -35,7 +35,6 @@ const buttonStyles = cva(["transition-colors"], {
 type ButtonProps = VariantProps<typeof buttonStyles> & ComponentProps<"button">;
 
 export function Button({ variant, size, className, ...props }: ButtonProps) {
-  console.log(buttonStyles({ variant, size }));
   return (
     <button
       {...props}

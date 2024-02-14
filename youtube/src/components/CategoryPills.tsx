@@ -19,11 +19,16 @@ export function CategoryPills({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (containerRef.current == null) return;
+    if (containerRef.current == null) {
+      console.log("returned");
+      return;
+    }
 
     const observer = new ResizeObserver((entries) => {
       const container = entries[0]?.target;
       if (container === null) return;
+
+      console.log(translate);
 
       setIsLeftVisible(translate > 0);
       setIsRightVisible(
