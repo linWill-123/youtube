@@ -28,8 +28,6 @@ export function CategoryPills({
       const container = entries[0]?.target;
       if (container === null) return;
 
-      console.log(translate);
-
       setIsLeftVisible(translate > 0);
       setIsRightVisible(
         translate + container.clientWidth < container.scrollWidth
